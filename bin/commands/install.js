@@ -47,6 +47,16 @@ module.exports = function (args) {
 			Veams.bowerInstall(Helpers.extensions.jsId, options);
 			break;
 
+		case Helpers.generatorId.gruntId:
+			Helpers.message('yellow', 'Starting ' + Helpers.generatorId.gruntId + ' installation ...');
+			Veams.runGenerator(Helpers.generator.grunt, options, Helpers.generatorId.gruntId);
+			break;
+
+		case Helpers.generatorId.templatingId:
+			Helpers.message('yellow', 'Starting ' + Helpers.generatorId.templatingId + ' installation ...');
+			Veams.runGenerator(Helpers.generator.templating, options, Helpers.generatorId.templatingId);
+			break;
+
 		default:
 			console.log('Sorry, you do not have defined a valid installation argument.');
 	}
