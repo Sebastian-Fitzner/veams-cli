@@ -28,6 +28,8 @@ module.exports = function (args) {
 			break;
 
 		case 'component':
+			Helpers.message('yellow', 'Starting to scaffold a new component  ...');
+
 			Veams.runGenerator(Helpers.generator.component, options, 'component');
 			break;
 

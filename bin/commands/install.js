@@ -23,12 +23,6 @@ module.exports = function (args) {
 	}
 
 	switch (extension) {
-
-		case Helpers.extensions.generatorId:
-			Helpers.message('yellow', 'Installing ' + Helpers.extensions.generatorId + ' ...');
-			Veams.npmInstall('generator-veams', options);
-			break;
-
 		case Helpers.extensions.componentsId:
 			Helpers.message('yellow', 'Downloading all ' + Helpers.extensions.componentsId + ' ...');
 			Veams.bowerInstall(Helpers.extensions.componentsId, options);
