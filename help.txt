@@ -2,27 +2,28 @@ Here you can find help instructions to veams-cli:
 
 Command | Description
 --------|-----------------------------------------------------------
-new     | Create something new (@see new section).
-install | Install extensions (@see install section).
 help    | Show the help.
+install | Install extensions (@see install section).
+new     | Create something new (@see new section).
+update  | Update veams-cli and all packages.
 
 
 Command: new
 ====================================================================
 Arguments | Description
 ----------|---------------------------------------------------------
-project   | Create a new project from scratch.
 component | Create a new component from scratch.
+project   | Create a new project from scratch.
 
 
 Command: install
 ====================================================================
 Arguments              | Description
 -----------------------|--------------------------------------------
+custom-component [path]| Install a custom component based on Veams.
+grunt-module           | Install a specific grunt module.
+template-helper        | Install custom template helpers.
 veams-components       | Install all veams-components.
 veams-component [name] | Install a specific veams-component.
-custom-component [path]| Install a custom component based on Veams.
-veams-sass             | Install veams-sass.
 veams-js               | Install veams-js.
-template-helper        | Install custom template helpers.
-grunt-module           | Install a specific grunt module.
+veams-sass             | Install veams-sass.

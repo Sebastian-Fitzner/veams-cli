@@ -28,24 +28,24 @@ Here you can find help instructions how you can use veams-cli:
 
 |Command | Description |
 |--------|-----------------------------------------------------------|
-|new     | Create something new (@see Command: new) |
-|install | Install extensions (@see Command: install). |
 |help    | Show the help. |
+|install | Install extensions (@see Command: install). |
+|new     | Create something new (@see Command: new) |
+|update  | Update veams-cli and all packages |
 
 ### Command: new
 
 |Arguments | Description                            | Example |
 |----------|----------------------------------------|---------|
-|project   | Create a new project.                  | `veams new project` |
 |component | Create a new component from scratch.   | `veams new component` |
+|project   | Create a new project.                  | `veams new project` |
 
 ### Command: install
 
 |Arguments              | Description                         | Example |
 |-----------------------|-------------------------------------|--------|
-|veams-generator        | Install veams-generator.            | `veams install veams-generator (-g)` |
+|grunt-module            | Install a specific grunt module.    | `veams install grunt-module` |
+|template-helper         | Install custom template helpers.    | `veams install template-helper` |
 |veams-components       | Install all veams-components.       | `veams install veams-components (--S)` |
 |veams-component [name] | Install a specific veams-component. | `veams install veams-component slider (--S)` |
 |veams-js               | Install veams-js.                   | `veams install veams-js (--S)` |
-template-helper         | Install custom template helpers.    | `veams install template-helper` |
-grunt-module            | Install a specific grunt module.    | `veams install grunt-module` |
