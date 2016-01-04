@@ -8,15 +8,15 @@
 
 ## Documentation
 
-Veams-cli gaves you the possibility to 
-- install Veams-Generator
+Veams-cli gives you the possibility to 
 - install Veams-JS
 - install Veams-Components (all or single components)
 - install Veams-Sass
 - install custom components (based on Veams-Component blueprints)
+- install template helpers
+- install grunt modules
 - scaffold a new project
 - scaffold a new component from scratch
-- start sub generators
 
 ## Installation
 
@@ -38,7 +38,7 @@ Here you can find help instructions how you can use veams-cli:
 |Arguments | Description                            | Example |
 |----------|----------------------------------------|---------|
 |component | Create a new component from scratch.   | `veams new component` |
-|project   | Create a new project.                  | `veams new project` |
+|project   | Create a new project from scratch.     | `veams new project` |
 
 ### Command: install
 
