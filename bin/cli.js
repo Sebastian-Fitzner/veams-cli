@@ -20,8 +20,8 @@ var Chalk = require('chalk');
  * Update Notifier
  * ============================================== */
 var message = [];
-var genNotifier = updateNotifier({pkg: genPkg, updateCheckInterval: 1000 * 60});
-var veamsNotifier = updateNotifier({pkg: pkg, updateCheckInterval: 1000 * 60});
+var genNotifier = updateNotifier({pkg: genPkg, updateCheckInterval: 1000 * 60 * 60 * 24});
+var veamsNotifier = updateNotifier({pkg: pkg, updateCheckInterval: 1000 * 60 * 60 * 24});
 
 if (genNotifier.update || veamsNotifier.update) {
 	message.push(Chalk.gray('Update available for: \n\n'));

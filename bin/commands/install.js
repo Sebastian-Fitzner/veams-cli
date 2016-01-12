@@ -3,7 +3,6 @@
  * ============================================== */
 var Veams = require('../../lib/veams');
 var Helpers = require('../../lib/utils/helpers');
-var Inserter = require('inserter');
 
 /* ==============================================
  * Export
@@ -14,7 +13,7 @@ var Inserter = require('inserter');
  *
  * @param {Array} args - Arguments in console
  */
-module.exports = function (args) {
+module.exports = function(args) {
 	var extension = args[0];
 	var options;
 
@@ -30,28 +29,22 @@ module.exports = function (args) {
 			break;
 
 		case Helpers.extensions.componentId:
-			var component = Helpers.extensions.componentId + '-' + args.shift();
+			var component = args.shift();
+			var registryName = Helpers.extensions.componentId + '-' + component;
 			options = args.join(' ');
 
-			Helpers.message('yellow', 'Downloading ' + component + ' ...');
+			Helpers.message('yellow', 'Downloading ' + registryName + ' ...');
 
-			Veams.bowerInstall(component, options, function (error, stdout, stderr) {
-				var insert = new Inserter({
-					tplFolder: ['resources/bower-components/' + component + '/usage'],
-					endpointFolders: [
-						'resources/templating/pages',
-						'resources/scss',
-						'resources/js'
-					]
-				});
+			Veams.bowerInstall(registryName, options, function(error, stdout, stderr) {
 
-				insert.render();
+				Veams.insertComponent('resources/bower-components/' + registryName);
+				Veams.addComponent('resources/bower-components/' + registryName, component);
 
 				if (error) {
 					Helpers.message('red', Helpers.msg.error(error, stderr));
 				} else {
 					Helpers.message('gray', stdout);
-					Helpers.message('green', Helpers.msg.success(component));
+					Helpers.message('green', Helpers.msg.success(registryName));
 				}
 			});
 
@@ -59,19 +52,11 @@ module.exports = function (args) {
 
 		case 'custom-component':
 			var componentPath = args.shift();
+			var componentName = Helpers.getLastFolder(componentPath);
 			options = args.join(' ');
 
-
-			var insert = new Inserter({
-				tplFolder: [componentPath],
-				endpointFolders: [
-					'resources/templating/pages',
-					'resources/scss',
-					'resources/js'
-				]
-			});
-
-			insert.render();
+			Veams.insertComponent(componentPath);
+			Veams.addComponent(componentPath, componentName);
 
 			break;
 
