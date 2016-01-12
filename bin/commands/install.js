@@ -3,6 +3,7 @@
  * ============================================== */
 var Veams = require('../../lib/veams');
 var Helpers = require('../../lib/utils/helpers');
+var Inserter = require('inserter');
 
 /* ==============================================
  * Export
@@ -33,7 +34,45 @@ module.exports = function (args) {
 			options = args.join(' ');
 
 			Helpers.message('yellow', 'Downloading ' + component + ' ...');
-			Veams.bowerInstall(component, options);
+
+			Veams.bowerInstall(component, options, function (error, stdout, stderr) {
+				var insert = new Inserter({
+					tplFolder: ['resources/bower-components/' + component + '/usage'],
+					endpointFolders: [
+						'resources/templating/pages',
+						'resources/scss',
+						'resources/js'
+					]
+				});
+
+				insert.render();
+
+				if (error) {
+					Helpers.message('red', Helpers.msg.error(error, stderr));
+				} else {
+					Helpers.message('gray', stdout);
+					Helpers.message('green', Helpers.msg.success(component));
+				}
+			});
+
+			break;
+
+		case 'custom-component':
+			var componentPath = args.shift();
+			options = args.join(' ');
+
+
+			var insert = new Inserter({
+				tplFolder: [componentPath],
+				endpointFolders: [
+					'resources/templating/pages',
+					'resources/scss',
+					'resources/js'
+				]
+			});
+
+			insert.render();
+
 			break;
 
 		case Helpers.extensions.jsId:
