@@ -37,8 +37,8 @@ module.exports = function(args) {
 
 			Veams.bowerInstall(registryName, options, function(error, stdout, stderr) {
 
-				Veams.insertComponent('resources/bower-components/' + registryName);
-				Veams.addComponent('resources/bower-components/' + registryName, component);
+				Veams.insertComponent(Veams.getBowerDir() + '/' + registryName);
+				Veams.addComponent(Veams.getBowerDir() + '/' + registryName, component);
 
 				if (error) {
 					Helpers.message('red', Helpers.msg.error(error, stderr));
