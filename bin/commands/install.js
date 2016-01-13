@@ -37,8 +37,8 @@ module.exports = function(args) {
 
 			Veams.bowerInstall(registryName, options, function(error, stdout, stderr) {
 
-				Veams.insertComponent(Veams.getBowerDir() + '/' + registryName);
-				Veams.addComponent(Veams.getBowerDir() + '/' + registryName, component);
+				Veams.addBlueprintFiles(Veams.getBowerDir() + '/' + registryName, component);
+				Veams.insertBlueprint(Veams.getBowerDir() + '/' + registryName);
 
 				if (error) {
 					Helpers.message('red', Helpers.msg.error(error, stderr));
@@ -50,13 +50,13 @@ module.exports = function(args) {
 
 			break;
 
-		case 'custom-component':
-			var componentPath = args.shift();
-			var componentName = Helpers.getLastFolder(componentPath);
-			options = args.join(' ');
+		case 'blueprint':
+			var bpPath = args.shift();
+			var bpType = args[0] || 'components';
+			var bpName = Helpers.getLastFolder(bpPath);
 
-			Veams.insertComponent(componentPath);
-			Veams.addComponent(componentPath, componentName);
+			Veams.addBlueprintFiles(bpPath, bpName, bpType);
+			Veams.insertBlueprint(bpPath);
 
 			break;
 

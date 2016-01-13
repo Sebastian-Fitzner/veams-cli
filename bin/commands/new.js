@@ -27,10 +27,10 @@ module.exports = function (args) {
 			Veams.runGenerator(Helpers.generator.standard, options, 'project');
 			break;
 
-		case 'component':
-			Helpers.message('yellow', 'Starting to scaffold a new component  ...');
+		case 'blueprint':
+			Helpers.message('yellow', 'Starting to scaffold a new blueprint  ...');
 
-			Veams.runGenerator(Helpers.generator.component, options, 'component');
+			Veams.runGenerator(Helpers.generator.blueprint, options, 'blueprint');
 			break;
 
 		default:

@@ -12,7 +12,7 @@ Command: new
 ====================================================================
 Arguments | Description
 ----------|---------------------------------------------------------
-component | Create a new component from scratch.
+blueprint | Create a new blueprint from scratch (component, block etc.).
 project   | Create a new project from scratch.
 
 
@@ -20,7 +20,7 @@ Command: install
 ====================================================================
 Arguments              | Description
 -----------------------|--------------------------------------------
-custom-component [path]| Install a custom component based on Veams.
+blueprint [path] [type]| Install a blueprint based on Veams.
 grunt-module           | Install a specific grunt module.
 template-helper        | Install custom template helpers.
 veams-components       | Install all veams-components.

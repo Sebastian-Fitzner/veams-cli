@@ -10,8 +10,6 @@ var Helpers = require('../../lib/utils/helpers');
 
 /**
  * Update function of extensions.
- *
- * @param {Array} args - Arguments in console
  */
 module.exports = function () {
 	Helpers.message('yellow', 'Updating Veams ...');

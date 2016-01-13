@@ -37,13 +37,14 @@ Here you can find help instructions how you can use veams-cli:
 
 |Arguments | Description                            | Example |
 |----------|----------------------------------------|---------|
-|component | Create a new component from scratch.   | `veams new component` |
+|blueprint | Create a new blueprint from scratch.   | `veams new blueprint` |
 |project   | Create a new project from scratch.     | `veams new project` |
 
 ### Command: install
 
 |Arguments              | Description                         | Example |
 |-----------------------|-------------------------------------|--------|
+|blueprint [path] [type]| Install a blueprint based on Veams.  | `veams install blueprint C:\blueprint\slider component` |
 |grunt-module            | Install a specific grunt module.    | `veams install grunt-module` |
 |template-helper         | Install custom template helpers.    | `veams install template-helper` |
 |veams-components       | Install all veams-components.       | `veams install veams-components (--S)` |
