@@ -12,6 +12,6 @@ var Helpers = require('../../lib/utils/helpers');
  * Update function of extensions.
  */
 module.exports = function () {
-	Helpers.message('yellow', 'Updating Veams ...');
+	Helpers.message('cyan', 'Updating Veams ...');
 	Veams.npmInstall('veams-cli -g');
 };

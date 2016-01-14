@@ -24,7 +24,7 @@ module.exports = function(args) {
 
 	switch (extension) {
 		case Helpers.extensions.componentsId:
-			Helpers.message('yellow', 'Downloading all ' + Helpers.extensions.componentsId + ' ...');
+			Helpers.message('cyan', 'Downloading all ' + Helpers.extensions.componentsId + ' ...');
 			Veams.bowerInstall(Helpers.extensions.componentsId, options);
 			break;
 
@@ -33,7 +33,7 @@ module.exports = function(args) {
 			var registryName = Helpers.extensions.componentId + '-' + component;
 			options = args.join(' ');
 
-			Helpers.message('yellow', 'Downloading ' + registryName + ' ...');
+			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
 			Veams.bowerInstall(registryName, options, function(error, stdout, stderr) {
 
@@ -61,17 +61,17 @@ module.exports = function(args) {
 			break;
 
 		case Helpers.extensions.jsId:
-			Helpers.message('yellow', 'Downloading ' + Helpers.extensions.jsId + ' ...');
+			Helpers.message('cyan', 'Downloading ' + Helpers.extensions.jsId + ' ...');
 			Veams.bowerInstall(Helpers.extensions.jsId, options);
 			break;
 
 		case Helpers.generatorId.gruntId:
-			Helpers.message('yellow', 'Starting ' + Helpers.generatorId.gruntId + ' installation ...');
+			Helpers.message('cyan', 'Starting ' + Helpers.generatorId.gruntId + ' installation ...');
 			Veams.runGenerator(Helpers.generator.grunt, options, Helpers.generatorId.gruntId);
 			break;
 
 		case Helpers.generatorId.templatingId:
-			Helpers.message('yellow', 'Starting ' + Helpers.generatorId.templatingId + ' installation ...');
+			Helpers.message('cyan', 'Starting ' + Helpers.generatorId.templatingId + ' installation ...');
 			Veams.runGenerator(Helpers.generator.templating, options, Helpers.generatorId.templatingId);
 			break;
 

@@ -28,7 +28,7 @@ module.exports = function (args) {
 			break;
 
 		case 'blueprint':
-			Helpers.message('yellow', 'Starting to scaffold a new blueprint  ...');
+			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
 
 			Veams.runGenerator(Helpers.generator.blueprint, options, 'blueprint');
 			break;
