@@ -52,7 +52,7 @@ module.exports = function(args) {
 
 		case 'blueprint':
 			var bpPath = args.shift();
-			var bpType = args[0] || 'components';
+			var bpType = args[0] || 'component';
 			var bpName = Helpers.getLastFolder(bpPath);
 
 			Veams.addBlueprintFiles(bpPath, bpName, bpType);
