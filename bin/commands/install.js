@@ -13,7 +13,7 @@ var Helpers = require('../../lib/utils/helpers');
  *
  * @param {Array} args - Arguments in console
  */
-module.exports = function(args) {
+module.exports = function (args) {
 	var extension = args[0];
 	var options;
 
@@ -35,7 +35,7 @@ module.exports = function(args) {
 
 			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
-			Veams.bowerInstall(registryName, options, function(error, stdout, stderr) {
+			Veams.bowerInstall(registryName, options, function (error, stdout, stderr) {
 
 				Veams.addBlueprintFiles(Veams.getBowerDir() + '/' + registryName, component);
 				Veams.insertBlueprint(Veams.getBowerDir() + '/' + registryName);
@@ -54,6 +54,9 @@ module.exports = function(args) {
 			var bpPath = args.shift();
 			var bpType = args[0] || 'component';
 			var bpName = Helpers.getLastFolder(bpPath);
+			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
+
+			Veams.runGenerator(Helpers.generator.blueprint, options, 'blueprint');
 
 			Veams.addBlueprintFiles(bpPath, bpName, bpType);
 			Veams.insertBlueprint(bpPath);

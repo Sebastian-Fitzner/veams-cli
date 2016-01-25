@@ -24,13 +24,13 @@ module.exports = function (args) {
 
 	switch (type) {
 		case 'project':
-			Veams.runGenerator(Helpers.generator.standard, options, 'project');
+			Veams.runGenerator(Helpers.generator.standard, options);
 			break;
 
 		case 'blueprint':
 			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
 
-			Veams.runGenerator(Helpers.generator.blueprint, options, 'blueprint');
+			Veams.runGenerator(Helpers.generator.blueprint, options);
 			break;
 
 		default:
