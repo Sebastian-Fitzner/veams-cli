@@ -17,6 +17,9 @@ module.exports = function (args) {
 	var extension = args[0];
 	var options;
 
+	Veams.DATA.bowerDir();
+	Veams.DATA.projectConfig();
+
 	if (args.length > 1) {
 		extension = args.shift();
 		options = args.join(' ');
@@ -54,6 +57,7 @@ module.exports = function (args) {
 			var bpPath = args.shift();
 			var bpType = args[0] || 'component';
 			var bpName = Helpers.getLastFolder(bpPath);
+
 			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
 
 			Veams.runGenerator(Helpers.generator.blueprint, options, 'blueprint');
