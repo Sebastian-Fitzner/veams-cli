@@ -15,7 +15,7 @@ var Helpers = require('../../lib/utils/helpers');
  */
 module.exports = function (args) {
 	var extension = args[0];
-	var options;
+	var options = '';
 
 	Veams.DATA.bowerDir();
 	Veams.DATA.projectConfig();
@@ -68,7 +68,18 @@ module.exports = function (args) {
 
 		case Helpers.extensions.jsId:
 			Helpers.message('cyan', 'Downloading ' + Helpers.extensions.jsId + ' ...');
-			Veams.bowerInstall(Helpers.extensions.jsId, options);
+			Veams.bowerInstall(Helpers.extensions.jsId, options, function (error, stdout, stderr) {
+				if (error) {
+					Helpers.message('red', Helpers.msg.error(error, stderr));
+				} else {
+					Helpers.message('gray', stdout);
+
+					Veams.copyFile(Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/global-scss', Veams.DATA.projectConfig().paths.scss + '/global', true);
+					Veams.copyFile(Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/js', Veams.DATA.projectConfig().paths.js, true);
+
+					Helpers.message('green', Helpers.msg.success(Helpers.extensions.jsId));
+				}
+			});
 			break;
 
 		case Helpers.generatorId.gruntId:
