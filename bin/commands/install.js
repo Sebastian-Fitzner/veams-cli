@@ -39,14 +39,13 @@ module.exports = function (args) {
 			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
 			Veams.bowerInstall(registryName, options, function (error, stdout, stderr) {
-
-				Veams.addBlueprintFiles(Veams.getBowerDir() + '/' + registryName, component);
-				Veams.insertBlueprint(Veams.getBowerDir() + '/' + registryName);
-
 				if (error) {
 					Helpers.message('red', Helpers.msg.error(error, stderr));
 				} else {
 					Helpers.message('gray', stdout);
+
+					Veams.addBlueprintFiles(Veams.getBowerDir() + '/' + registryName, component);
+					Veams.insertBlueprint(Veams.getBowerDir() + '/' + registryName);
 					Helpers.message('green', Helpers.msg.success(registryName));
 				}
 			});
