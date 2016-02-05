@@ -24,7 +24,7 @@ module.exports = function (args) {
 
 	switch (type) {
 		case 'project':
-			Veams.runGenerator(Helpers.generator.standard, options);
+			Veams.runGenerator(Helpers.generator.standard, options, 'Project');
 			break;
 
 		case 'blueprint':
