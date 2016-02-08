@@ -59,8 +59,6 @@ module.exports = function (args) {
 
 			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
 
-			Veams.runGenerator(Helpers.generator.blueprint, options, 'blueprint');
-
 			Veams.addBlueprintFiles(bpPath, bpName, bpType);
 			Veams.insertBlueprint(bpPath);
 
