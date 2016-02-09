@@ -30,7 +30,7 @@ module.exports = function (args) {
 		case 'blueprint':
 			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
 
-			Veams.runGenerator(Helpers.generator.blueprint, options);
+			Veams.runGenerator(Helpers.generator.blueprint, options, 'Blueprint');
 			break;
 
 		default:

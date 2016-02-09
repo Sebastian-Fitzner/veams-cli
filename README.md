@@ -31,6 +31,7 @@ Here you can find help instructions how you can use veams-cli:
 |help    | Show the help. |
 |install | Install extensions (@see Command: install). |
 |new     | Create something new (@see Command: new) |
+|add     | Add a component or block to your project (@see Command: add) |
 |update  | Update veams-cli and all packages |
 
 ### Command: new
@@ -39,6 +40,13 @@ Here you can find help instructions how you can use veams-cli:
 |----------|----------------------------------------|---------|
 |blueprint | Create a new blueprint from scratch.   | `veams new blueprint` |
 |project   | Create a new project from scratch.     | `veams new project` |
+
+### Command: add
+
+|Arguments | Description                            | Example |
+|----------|----------------------------------------|---------|
+|component [name] | Add a component to your project   | `veams add component slider` |
+|block [name]   | Create a new project from scratch.  | `veams add block navigation` |
 
 ### Command: install
 

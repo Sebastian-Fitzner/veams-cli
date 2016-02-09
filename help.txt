@@ -5,6 +5,7 @@ Command | Description
 help    | Show the help.
 install | Install extensions (@see install section).
 new     | Create something new (@see new section).
+add     | Add a component or block to your project (@see Command: add)
 update  | Update veams-cli and all packages.
 
 
@@ -14,6 +15,14 @@ Arguments | Description
 ----------|---------------------------------------------------------
 blueprint | Create a new blueprint from scratch (component, block etc.).
 project   | Create a new project from scratch.
+
+
+Command: new
+====================================================================
+Arguments        | Description
+-----------------|--------------------------------------------------
+component [name] | Add a component to your project
+block [name]     | Create a new project from scratch.
 
 
 Command: install
