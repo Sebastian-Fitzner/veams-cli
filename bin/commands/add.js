@@ -31,7 +31,14 @@ module.exports = function (args) {
 			Helpers.message('cyan', 'Starting to scaffold a new component  ...');
 
 			Veams.runGenerator(Helpers.generator.blueprint, name + ' --component --tmp', name, function () {
-				Veams.addBlueprintFiles('tmp/' + name, 'component');
+				Veams.addBlueprintFiles({
+					path: 'tmp/' + name,
+					name: name,
+					type: 'component',
+					cb: function () {
+						Helpers.remove('tmp/' + name);
+					}
+				});
 				Veams.insertBlueprint('tmp/' + name);
 			});
 			break;
@@ -40,7 +47,14 @@ module.exports = function (args) {
 			Helpers.message('cyan', 'Starting to scaffold a new block  ...');
 
 			Veams.runGenerator(Helpers.generator.blueprint, name + ' --block --tmp', name, function () {
-				Veams.addBlueprintFiles('tmp/' + name, 'block');
+				Veams.addBlueprintFiles({
+					path: 'tmp/' + name,
+					name: name,
+					type: 'block',
+					cb: function () {
+						Helpers.remove('tmp/' + name);
+					}
+				});
 				Veams.insertBlueprint('tmp/' + name);
 			});
 			break;
