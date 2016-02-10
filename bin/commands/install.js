@@ -44,7 +44,10 @@ module.exports = function (args) {
 				} else {
 					Helpers.message('gray', stdout);
 
-					Veams.addBlueprintFiles(Veams.getBowerDir() + '/' + registryName, component);
+					Veams.addBlueprintFiles({
+						path: Veams.getBowerDir() + '/' + registryName,
+						name: component
+					});
 					Veams.insertBlueprint(Veams.getBowerDir() + '/' + registryName);
 					Helpers.message('green', Helpers.msg.success(registryName));
 				}
@@ -59,7 +62,11 @@ module.exports = function (args) {
 
 			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
 
-			Veams.addBlueprintFiles(bpPath, bpName, bpType);
+			Veams.addBlueprintFiles({
+				path: bpPath,
+				name: bpName,
+				type: bpType
+			});
 			Veams.insertBlueprint(bpPath);
 
 			break;
