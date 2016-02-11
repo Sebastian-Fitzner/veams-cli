@@ -47,7 +47,7 @@ Here you can find help instructions how you can use veams-cli:
 |Arguments | Description                            | Example |
 |----------|----------------------------------------|---------|
 |component [name] | Add a component to your project   | `veams add component slider` |
-|block [name]   | Create a new project from scratch.  | `veams add block navigation` |
+|block [name]   | Add a block to your project.  | `veams add block navigation` |
 
 ### Command: install
 
