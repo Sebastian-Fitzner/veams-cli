@@ -26,14 +26,16 @@ Install `veams-cli` via: `npm install -g veams-cli`.
 
 Here you can find help instructions how you can use veams-cli:
 
-|Command | Description |
-|--------|-----------------------------------------------------------|
-|help    | Show the help. |
-|install | Install extensions (@see Command: install). |
-|new     | Create something new (@see Command: new) |
-|add     | Add a component or block to your project (@see Command: add) |
-|update  | Update veams-cli and all packages |
-|version | Show VEAMS version |
+`veams command [arguments]`
+
+|Command     | Description |
+|------------|-------------------------------------------------------|
+|help, -h    | Show the help. |
+|install, -i | Install extensions (@see Command: install). |
+|new, -n     | Create something new (@see Command: new) |
+|add, -a     | Add a component or block to your project (@see Command: add) |
+|update, -u  | Update veams-cli and all packages |
+|version, -v | Show VEAMS version |
 
 ### Command: new
 

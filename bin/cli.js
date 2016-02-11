@@ -12,11 +12,12 @@
  * ============================================== */
 var Helpers = require('../lib/utils/helpers');
 var Veams = require('../lib/veams');
+var chalk = require('chalk');
 
 /* ==============================================
  * Update Notifier
  * ============================================== */
-Veams.checkUpdateAvailability();
+//Veams.checkUpdateAvailability();
 
 /* ==============================================
  * Passed arguments
@@ -24,5 +25,22 @@ Veams.checkUpdateAvailability();
 var args = process.argv;
 var cmd = args[2] || 'help';
 var options = args.splice(3, 3);
+var alias = {
+	a: 'add',
+	h: 'help',
+	i: 'install',
+	n: 'news',
+	u: 'update',
+	v: 'version'
+};
 
-require('./commands/' + cmd)(options);
+if (cmd.length === 2) {
+	cmd = alias[cmd.split('-')[1]] || cmd;
+}
+
+try {
+	require('./commands/' + cmd)(options);
+} catch (e) {
+	Helpers.message('red', '\nERROR: UNKNOWN_COMMAND\n');
+	require('./commands/help')();
+}
