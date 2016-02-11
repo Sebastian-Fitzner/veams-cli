@@ -33,6 +33,7 @@ Here you can find help instructions how you can use veams-cli:
 |new     | Create something new (@see Command: new) |
 |add     | Add a component or block to your project (@see Command: add) |
 |update  | Update veams-cli and all packages |
+|version | Show VEAMS version |
 
 ### Command: new
 
