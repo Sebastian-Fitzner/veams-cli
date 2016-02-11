@@ -15,5 +15,5 @@ var Helpers = require('../../lib/utils/helpers');
  * Help output.
  */
 module.exports = function () {
-	console.log(chalk.cyan(fs.readFileSync(path.join(__dirname, '../../help.txt'), 'utf8')));
+	console.log(chalk.cyan('\n' + fs.readFileSync(path.join(__dirname, '../../help.txt'), 'utf8')));
 };
