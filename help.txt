@@ -2,7 +2,7 @@ Here you can find help instructions to veams-cli:
 
 veams command [arguments]
 
-Command | Description
+Command     | Description
 ------------|-------------------------------------------------------
 help, -h    | Show the help.
 install, -i | Install extensions (@see install section).
