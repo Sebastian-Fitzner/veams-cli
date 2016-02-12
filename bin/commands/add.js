@@ -9,13 +9,15 @@ var Veams = require('../../lib/veams');
  * ============================================== */
 
 /**
- * Install function of extensions.
+ * Install extensions.
  *
- * @param {Array} args - Arguments in console
+ * @param {Array} args - Arguments in bash
  */
 module.exports = function (args) {
 	var type = args[0];
 	var name;
+	var alias = Veams.DATA.aliases.types;
+
 
 	if (args.length > 1) {
 		type = args.shift();
@@ -26,8 +28,11 @@ module.exports = function (args) {
 		return;
 	}
 
+	type = alias[type] || type;
+
+
 	switch (type) {
-		case 'component':
+		case Veams.DATA.aliases.types.c:
 			Helpers.message('cyan', 'Starting to scaffold a new component  ...');
 
 			Veams.runGenerator(Helpers.generator.blueprint, name + ' --component --tmp', name, function () {
@@ -43,7 +48,7 @@ module.exports = function (args) {
 			});
 			break;
 
-		case 'block':
+		case Veams.DATA.aliases.types.b:
 			Helpers.message('cyan', 'Starting to scaffold a new block  ...');
 
 			Veams.runGenerator(Helpers.generator.blueprint, name + ' --block --tmp', name, function () {

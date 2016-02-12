@@ -24,15 +24,8 @@ var chalk = require('chalk');
  * ============================================== */
 var args = process.argv;
 var cmd = args[2] || 'help';
-var options = args.splice(3, 3);
-var alias = {
-	a: 'add',
-	h: 'help',
-	i: 'install',
-	n: 'news',
-	u: 'update',
-	v: 'version'
-};
+var options = args.slice(3);
+var alias = Veams.DATA.aliases.cmds;
 
 if (cmd.length === 2) {
 	cmd = alias[cmd.split('-')[1]] || cmd;

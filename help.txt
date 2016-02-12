@@ -2,40 +2,38 @@ Here you can find help instructions to veams-cli:
 
 veams command [arguments]
 
-Command     | Description
-------------|-------------------------------------------------------
-help, -h    | Show the help.
-install, -i | Install extensions (@see install section).
-new, -n     | Create something new (@see new section).
-add, -a     | Add a component or block to your project (@see Command: add)
-update, -u  | Update veams-cli and all packages.
-version, -v | Show VEAMS version.
+Command  | Short | Description
+---------|-------|--------------------------------------------------------
+help     | -h    | Show the help.
+install  | -i    | Install extensions (@see install section)
+new      | -n    | Create something new (@see new section)
+add      | -a    | Add component, block to project (@see Command: add)
+update   | -u    | Update veams-cli and all packages.
+version  | -v    | Show VEAMS version.
 
 
 Command: new
-====================================================================
-Arguments | Description
-----------|---------------------------------------------------------
-blueprint | Create a new blueprint from scratch (component, block etc.).
-project   | Create a new project from scratch.
+===========================================================================
+Arguments | Short | Description
+----------|-------|--------------------------------------------------------
+blueprint | bp    | Create a new blueprint from scratch.
+project   | p     | Create a new project from scratch.
 
 
 Command: add
-====================================================================
-Arguments        | Description
------------------|--------------------------------------------------
-component [name] | Add a component to your project
-block [name]     | Add a block to your project
+===========================================================================
+Arguments        | Short | Description
+-----------------|-------|-------------------------------------------------
+component [name] | c     | Add a component to your project
+block [name]     | b     | Add a block to your project
 
 
 Command: install
-====================================================================
-Arguments              | Description
------------------------|--------------------------------------------
-blueprint [path] [type]| Install a blueprint based on Veams.
-grunt-module           | Install a specific grunt module.
-template-helper        | Install custom template helpers.
-veams-components       | Install all veams-components.
-veams-component [name] | Install a specific veams-component.
-veams-js               | Install veams-js.
-veams-sass             | Install veams-sass.
+===========================================================================
+Arguments               | Short | Description
+------------------------|-------|------------------------------------------
+blueprint [path] [type] | bp    | Install a blueprint based on Veams.
+grunt-module            | gm    | Install a specific grunt module.
+template-helper         | th    | Install custom template helpers.
+veams-component [name]  | vc    | Install a specific veams-component.
+veams-js                | vjs   | Install veams-js.
