@@ -41,7 +41,7 @@ Here you can find help instructions how you can use veams-cli:
 
 |Arguments | Shortcut | Description                            | Example |
 |----------|----------|----------------------------------------|---------|
-|blueprint [name] | bp | Create a new blueprint from scratch.   | `veams new blueprint` |
+|blueprint [name] | bp | Create a new blueprint from scratch.   | `veams new blueprint accordion` |
 |project  | p | Create a new project from scratch.     | `veams new project` |
 
 ### Command: add
