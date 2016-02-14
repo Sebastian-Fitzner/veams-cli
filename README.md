@@ -1,9 +1,14 @@
-<p align="center"><img src="http://www.veams.org/img/svg/icons/veams-std.svg"></p>
+<p align="center"><img src="http://www.veams.org/img/svg/icons/veams-std.svg">
+<br>
+<br>
+<a href="http://badge.fury.io/js/veams-cli"><img src="https://badge.fury.io/js/veams-cli.svg" alt="NPM version" /></a>
+<a href="https://gitter.im/Sebastian-Fitzner/Veams?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Sebastian-Fitzner/Veams.svg" alt="Gitter Chat" /></a>
+</p>
 
 <p align="center">
 	<strong>The command line interface for Veams.</strong>
-	<br><br>
-	<a href="http://veams.org">Visit the Veams website.</a><br><br>
+	<br>
+	<a href="http://veams.org">Visit the Veams website.</a><br>
 </p>
 
 ## Documentation
