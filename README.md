@@ -1,7 +1,7 @@
 <p align="center"><img src="http://www.veams.org/img/svg/icons/veams-std.svg">
 <br>
 <br>
-<a href="http://badge.fury.io/js/veams-cli"><img src="https://badge.fury.io/js/veams-cli.svg" alt="NPM version" /></a>
+<a href="https://badge.fury.io/bo/veams-js"><img src="https://badge.fury.io/bo/veams-js.svg" alt="Bower version" height="18"></a>
 <a href="https://gitter.im/Sebastian-Fitzner/Veams?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Sebastian-Fitzner/Veams.svg" alt="Gitter Chat" /></a>
 </p>
 
@@ -61,6 +61,7 @@ Here you can find help instructions how you can use veams-cli:
 |Arguments              | Shortcut | Description                         | Example |
 |-----------------------|----------|-------------------------------------|--------|
 |blueprint [path] [type]| bp | Install a blueprint based on Veams.  | `veams install blueprint C:\blueprint\slider component` |
+|bower-component [name] | bc | Install a specific bower-component. | `veams install bower-component custom-slider (--S)` |
 |grunt-module       | gm | Install a specific grunt module.    | `veams install grunt-module` |
 |template-helper    | th | Install custom template helpers.    | `veams install template-helper` |
 |veams-component [name] | vc | Install a specific veams-component. | `veams install veams-component slider (--S)` |
