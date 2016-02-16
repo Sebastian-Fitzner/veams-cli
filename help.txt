@@ -29,12 +29,12 @@ block [name]     | b     | Add a block to your project
 
 
 Command: install
-===========================================================================
-Arguments               | Short | Description
-------------------------|-------|------------------------------------------
-blueprint [path] [type] | bp    | Install a blueprint based on Veams.
-bower-component [name]  | bc    | Install a bower-component based on Veams.
-grunt-module            | gm    | Install a specific grunt module.
-template-helper         | th    | Install custom template helpers.
-veams-component [name]  | vc    | Install a specific veams-component.
-veams-js                | vjs   | Install veams-js.
+===============================================================================
+Arguments                    | Short | Description
+----------------------------|-------|------------------------------------------
+blueprint [path] [type]     | bp    | Install a blueprint based on Veams.
+bower-component [r] [n] [t] | bc    | Install a bower-component based on Veams.
+grunt-module                | gm    | Install a specific grunt module.
+template-helper             | th    | Install custom template helpers.
+veams-component [name]      | vc    | Install a specific veams-component.
+veams-js                    | vjs   | Install veams-js.

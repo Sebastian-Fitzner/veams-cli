@@ -21,7 +21,6 @@ module.exports = function (args) {
 	if (args.length > 1) {
 		type = args.shift();
 		options = args.join(' ');
-		console.log('type: ', type, args, options);
 	}
 
 	type = alias[type] || type;

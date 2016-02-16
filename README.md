@@ -61,7 +61,7 @@ Here you can find help instructions how you can use veams-cli:
 |Arguments              | Shortcut | Description                         | Example |
 |-----------------------|----------|-------------------------------------|--------|
 |blueprint [path] [type]| bp | Install a blueprint based on Veams.  | `veams install blueprint C:\blueprint\slider component` |
-|bower-component [name] | bc | Install a bower-component based on Veams. | `veams install bower-component custom-slider (--S)` |
+|bower-component [registryName] [name] [type] | bc | Install a bower-component based on Veams. | `veams install bower-component custom-slider slider component (--S)` |
 |grunt-module       | gm | Install a specific grunt module.    | `veams install grunt-module` |
 |template-helper    | th | Install custom template helpers.    | `veams install template-helper` |
 |veams-component [name] | vc | Install a specific veams-component. | `veams install veams-component slider (--S)` |
