@@ -84,6 +84,22 @@ module.exports = function (args) {
 
 			break;
 
+		case Veams.DATA.aliases.exts.vu:
+			var name = args.shift();
+			registryName = Helpers.extensions.componentId + '-' + name;
+			options = args.join(' ');
+
+			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
+
+			installBowerComponent({
+				registryName: registryName,
+				options: options,
+				name: name,
+				type: 'utility'
+			});
+
+			break;
+
 		case Veams.DATA.aliases.exts.bc:
 			registryName = args.shift();
 			options = args.join(' ');
