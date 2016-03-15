@@ -24,7 +24,7 @@ function installBowerComponent(obj) {
 		if (error) {
 			Helpers.message('red', Helpers.msg.error(error, stderr));
 		} else {
-			Helpers.message('gray', stdout);
+			Helpers.message('gray', 'Veams-JS with all dependencies installed!');
 
 			Veams.addBlueprintFiles({
 				path: Veams.getBowerDir() + '/' + registryName,
@@ -135,23 +135,32 @@ module.exports = function (args) {
 		case Veams.DATA.aliases.exts.vjs:
 			Helpers.message('cyan', 'Downloading ' + Helpers.extensions.jsId + ' ...');
 			Veams.bowerInstall(Helpers.extensions.jsId, options, function (error, stdout, stderr) {
+
 				if (error) {
 					Helpers.message('red', Helpers.msg.error(error, stderr));
 				} else {
 					Helpers.message('gray', stdout);
 
-					Veams.copyFile({
-						src: Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/global-scss',
-						dest: Veams.DATA.projectConfig().paths.scss + '/global',
-						msg: true
-					});
-					Veams.copyFile({
-						src: Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/js',
-						dest: Veams.DATA.projectConfig().paths.js,
-						msg: true
-					});
+					Veams.npmInstall('respimage jquery exoskeleton underscore touchswipe', '--save', function (err, stdout, stderr) {
+						if (err) {
+							Helpers.message('red', Helpers.msg.error(err, stderr));
+						} else {
+							Helpers.message('gray', stdout);
 
-					Helpers.message('green', Helpers.msg.success(Helpers.extensions.jsId));
+							Veams.copyFile({
+								src: Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/global-scss',
+								dest: Veams.DATA.projectConfig().paths.scss + '/global',
+								msg: true
+							});
+							Veams.copyFile({
+								src: Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/js',
+								dest: Veams.DATA.projectConfig().paths.js,
+								msg: true
+							});
+
+							Helpers.message('green', Helpers.msg.success(Helpers.extensions.jsId));
+						}
+					});
 				}
 			});
 			break;
