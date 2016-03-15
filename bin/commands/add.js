@@ -64,6 +64,22 @@ module.exports = function (args) {
 			});
 			break;
 
+		case Veams.DATA.aliases.types.u:
+			Helpers.message('cyan', 'Starting to scaffold a new utility  ...');
+
+			Veams.runGenerator(Helpers.generator.blueprint, name + ' --utility --tmp', name, function () {
+				Veams.addBlueprintFiles({
+					path: 'tmp/' + name,
+					name: name,
+					type: 'utility',
+					cb: function () {
+						Helpers.remove('tmp/' + name);
+					}
+				});
+				Veams.insertBlueprint('tmp/' + name);
+			});
+			break;
+
 		default:
 			Helpers.message('yellow', Helpers.msg.warning('Sorry, you do not have defined a valid argument for adding a new blueprint.'));
 	}
