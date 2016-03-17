@@ -47,22 +47,23 @@ function installBowerComponent(obj) {
  * @param {Array} args - Arguments in console
  */
 module.exports = function (args) {
-	var extension = args[0];
+	var argument = args[0];
 	var options = '';
 	var registryName = '';
-	var alias = Veams.DATA.aliases.exts;
+	var extArgument = Veams.DATA.aliases.exts;
+	var typeArgument = Veams.DATA.aliases.types;
 
 	Veams.DATA.bowerDir();
 	Veams.DATA.projectConfig();
 
 	if (args.length > 1) {
-		extension = args.shift();
+		argument = args.shift();
 		options = args.join(' ');
 	}
 
-	extension = alias[extension] || extension;
+	argument = extArgument[argument] || typeArgument[argument] || argument;
 
-	switch (extension) {
+	switch (argument) {
 		case Helpers.extensions.componentsId:
 			Helpers.message('cyan', 'Downloading all ' + Helpers.extensions.componentsId + ' ...');
 			Veams.bowerInstall(Helpers.extensions.componentsId, options);
@@ -103,14 +104,14 @@ module.exports = function (args) {
 		case Veams.DATA.aliases.exts.bc:
 			registryName = args.shift();
 			options = args.join(' ');
-			var name = args[0];
+			var bcName = args[0];
 			var type = args[1] || '';
 
 			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
 			installBowerComponent({
 				registryName: registryName,
-				name: name,
+				name: bcName,
 				type: type
 			});
 

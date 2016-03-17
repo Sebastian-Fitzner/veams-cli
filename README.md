@@ -16,7 +16,6 @@
 Veams-cli gives you the possibility to 
 - install Veams-JS
 - install Veams-Components (all or single components)
-- install Veams-Sass
 - install custom components (based on Veams-Component blueprints)
 - install template helpers
 - install grunt modules
@@ -35,10 +34,10 @@ Here you can find help instructions how you can use veams-cli:
 
 |Command     | Shortcut | Description |
 |------------|----------|-------------------------------------------------------|
+|add     | -a | Add a component or block to your project (@see Command: add) |
 |help    | -h | Show the help. |
 |install | -i | Install extensions (@see Command: install). |
 |new     | -n | Create something new (@see Command: new) |
-|add     | -a | Add a component or block to your project (@see Command: add) |
 |update  | -u | Update veams-cli and all packages |
 |version | -v | Show VEAMS version |
 
@@ -53,8 +52,9 @@ Here you can find help instructions how you can use veams-cli:
 
 |Arguments | Shortcut | Description                            | Example |
 |----------|----------|----------------------------------------|---------|
-|component [name] | c | Add a component to your project   | `veams add component slider` |
 |block [name] | b | Add a block to your project  | `veams add block navigation` |
+|component [name] | c | Add a component to your project   | `veams add component slider` |
+|utility [name] | u | Add an utility to your project   | `veams add utility grid-col` |
 
 ### Command: install
 

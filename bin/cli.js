@@ -12,12 +12,11 @@
  * ============================================== */
 var Helpers = require('../lib/utils/helpers');
 var Veams = require('../lib/veams');
-var chalk = require('chalk');
 
 /* ==============================================
  * Update Notifier
  * ============================================== */
-//Veams.checkUpdateAvailability();
+Veams.checkUpdateAvailability();
 
 /* ==============================================
  * Passed arguments
@@ -34,6 +33,6 @@ if (cmd.length === 2) {
 try {
 	require('./commands/' + cmd)(options);
 } catch (e) {
-	Helpers.message('red', '\nERROR: UNKNOWN_COMMAND\n');
+	Helpers.message('red', 'ERROR: UNKNOWN_COMMAND\n' + e);
 	require('./commands/help')();
 }
