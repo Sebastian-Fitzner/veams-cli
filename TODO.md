@@ -7,7 +7,7 @@
 - rewrite veams-cli
 
 ### Tests
-- add Unit tests
+- add unit tests
 
 ===========================================================
 ## Version 1.xx
@@ -16,8 +16,8 @@
 - add the possiblity to scaffold a config.js file and extend the package.json
 
 ### Clean up
-- helpers.js contains variables
-- veams.js contains helper functions
+- (/) helpers.js contains variables
+- (/) veams.js contains helper functions
 - all functions should except objects as parameters
 
 ### Welcome message

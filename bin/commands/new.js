@@ -27,17 +27,17 @@ module.exports = function (args) {
 
 	switch (type) {
 		case Veams.DATA.aliases.types.p:
-			Veams.runGenerator(Helpers.generator.standard, options, 'Project');
+			Veams.runGenerator(Veams.generators.standard, options, 'Project');
 			break;
 
 		case Veams.DATA.aliases.types.bp:
 			if (!options) {
-				return Helpers.message('yellow', Helpers.msg.warning('You have to provide a name for your blueprint!'));
+				return Helpers.message('yellow', Veams.msg.warning('You have to provide a name for your blueprint!'));
 			}
 
 			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
 
-			Veams.runGenerator(Helpers.generator.blueprint, options, 'Blueprint');
+			Veams.runGenerator(Veams.generators.blueprint, options, 'Blueprint');
 			break;
 
 		default:

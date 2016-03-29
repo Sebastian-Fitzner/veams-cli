@@ -33,9 +33,9 @@ module.exports = function (args) {
 
 	switch (type) {
 		case Veams.DATA.aliases.types.c:
-			Helpers.message('cyan', 'Starting to scaffold a new component  ...');
+			Helpers.message('cyan', 'Starting to scaffold a new component  ...', Veams.generator);
 
-			Veams.runGenerator(Helpers.generator.blueprint, name + ' --component --tmp', name, function () {
+			Veams.runGenerator(Veams.generators.blueprint, name + ' --component --tmp', name, function () {
 				Veams.addBlueprintFiles({
 					path: 'tmp/' + name,
 					name: name,
@@ -51,7 +51,7 @@ module.exports = function (args) {
 		case Veams.DATA.aliases.types.b:
 			Helpers.message('cyan', 'Starting to scaffold a new block  ...');
 
-			Veams.runGenerator(Helpers.generator.blueprint, name + ' --block --tmp', name, function () {
+			Veams.runGenerator(Veams.generators.blueprint, name + ' --block --tmp', name, function () {
 				Veams.addBlueprintFiles({
 					path: 'tmp/' + name,
 					name: name,
@@ -67,7 +67,7 @@ module.exports = function (args) {
 		case Veams.DATA.aliases.types.u:
 			Helpers.message('cyan', 'Starting to scaffold a new utility  ...');
 
-			Veams.runGenerator(Helpers.generator.blueprint, name + ' --utility --tmp', name, function () {
+			Veams.runGenerator(Veams.generators.blueprint, name + ' --utility --tmp', name, function () {
 				Veams.addBlueprintFiles({
 					path: 'tmp/' + name,
 					name: name,

@@ -64,14 +64,14 @@ module.exports = function (args) {
 	argument = extArgument[argument] || typeArgument[argument] || argument;
 
 	switch (argument) {
-		case Helpers.extensions.componentsId:
-			Helpers.message('cyan', 'Downloading all ' + Helpers.extensions.componentsId + ' ...');
-			Veams.bowerInstall(Helpers.extensions.componentsId, options);
+		case Veams.extensions.componentsId:
+			Helpers.message('cyan', 'Downloading all ' + Veams.extensions.componentsId + ' ...');
+			Veams.bowerInstall(Veams.extensions.componentsId, options);
 			break;
 
 		case Veams.DATA.aliases.exts.vc:
 			var component = args.shift();
-			registryName = Helpers.extensions.componentId + '-' + component;
+			registryName = Veams.extensions.componentId + '-' + component;
 			options = args.join(' ');
 
 			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
@@ -87,7 +87,7 @@ module.exports = function (args) {
 
 		case Veams.DATA.aliases.exts.vu:
 			var name = args.shift();
-			registryName = Helpers.extensions.componentId + '-' + name;
+			registryName = Veams.extensions.componentId + '-' + name;
 			options = args.join(' ');
 
 			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
@@ -134,34 +134,34 @@ module.exports = function (args) {
 			break;
 
 		case Veams.DATA.aliases.exts.vjs:
-			Helpers.message('cyan', 'Downloading ' + Helpers.extensions.jsId + ' ...');
-			Veams.bowerInstall(Helpers.extensions.jsId, options, function (error, stdout, stderr) {
+			Helpers.message('cyan', 'Downloading ' + Veams.extensions.jsId + ' ...');
+			Veams.bowerInstall(Veams.extensions.jsId, options, function (error, stdout, stderr) {
 
 				if (error) {
 					Helpers.message('red', Helpers.msg.error(error, stderr));
 				} else {
 					Helpers.message('gray', stdout);
 
-					Veams.npmInstall('respimage jquery exoskeleton underscore touchswipe', '--save', function (err, stdout, stderr) {
+					Veams.npmInstall('respimage jquery exoskeleton underscore touchswipe handlebars', '--save', function (err, stdout, stderr) {
 						if (err) {
 							Helpers.message('red', Helpers.msg.error(err, stderr));
 						} else {
 							Helpers.message('gray', stdout);
 
-							Veams.copyFile({
-								src: Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/global-scss',
+							Helpers.copyFile({
+								src: Veams.getBowerDir() + '/' + Veams.extensions.jsId + '/global-scss',
 								dest: Veams.DATA.projectConfig().paths.scss + '/global',
 								msg: true
 							});
-							Veams.copyFile({
-								src: Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/js',
+							Helpers.copyFile({
+								src: Veams.getBowerDir() + '/' + Veams.extensions.jsId + '/js',
 								dest: Veams.DATA.projectConfig().paths.js,
 								msg: true
 							});
 							
 							Veams.insertBlueprint(Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/README.md');
 
-							Helpers.message('green', Helpers.msg.success(Helpers.extensions.jsId));
+							Helpers.message('green', Helpers.msg.success(Veams.extensions.jsId));
 						}
 					});
 				}
@@ -169,13 +169,13 @@ module.exports = function (args) {
 			break;
 
 		case Veams.DATA.aliases.exts.gm:
-			Helpers.message('cyan', 'Starting ' + Helpers.generatorId.gruntId + ' installation ...');
-			Veams.runGenerator(Helpers.generator.grunt, options, Helpers.generatorId.gruntId);
+			Helpers.message('cyan', 'Starting ' + Veams.generatorId.gruntId + ' installation ...');
+			Veams.runGenerator(Veams.generators.grunt, options, Veams.generatorId.gruntId);
 			break;
 
 		case Veams.DATA.aliases.exts.th:
-			Helpers.message('cyan', 'Starting ' + Helpers.generatorId.templatingId + ' installation ...');
-			Veams.runGenerator(Helpers.generator.templating, options, Helpers.generatorId.templatingId);
+			Helpers.message('cyan', 'Starting ' + Veams.generatorId.templatingId + ' installation ...');
+			Veams.runGenerator(Veams.generators.templating, options, Veams.generatorId.templatingId);
 			break;
 
 		default:
