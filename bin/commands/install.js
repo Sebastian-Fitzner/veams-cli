@@ -158,6 +158,8 @@ module.exports = function (args) {
 								dest: Veams.DATA.projectConfig().paths.js,
 								msg: true
 							});
+							
+							Veams.insertBlueprint(Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/README.md');
 
 							Helpers.message('green', Helpers.msg.success(Helpers.extensions.jsId));
 						}

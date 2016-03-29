@@ -1,3 +1,6 @@
+### v1.2.14
+- added insert blueprint function to ´veamsJS´ installation
+
 ### v1.2.13
 - added better utilitities support
 
