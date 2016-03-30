@@ -159,7 +159,7 @@ module.exports = function (args) {
 								msg: true
 							});
 							
-							Veams.insertBlueprint(Veams.getBowerDir() + '/' + Helpers.extensions.jsId + '/README.md');
+							Veams.insertBlueprint(Veams.getBowerDir() + '/' + Veams.extensions.jsId + '/README.md');
 
 							Helpers.message('green', Helpers.msg.success(Veams.extensions.jsId));
 						}
