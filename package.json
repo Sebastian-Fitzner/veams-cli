@@ -1,7 +1,7 @@
 {
 	"name": "veams-cli",
 	"homepage": "http://veams.org/",
-	"version": "1.2.19",
+	"version": "1.2.20",
 	"description": "Veams command line interface",
 	"scripts": {
 		"test": "test"
