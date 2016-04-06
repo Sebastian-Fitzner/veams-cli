@@ -1,3 +1,9 @@
+### v1.2.20
+- added automated veams-js installation routine to `veams new project`
+
+### v1.2.19
+- bugfix release (line endings)
+
 ### v1.2.15
 - clean-up release
 
