@@ -54,6 +54,7 @@ Here you can find help instructions how you can use veams-cli:
 |----------|----------|----------------------------------------|---------|
 |block [name] | b | Add a block to your project  | `veams add block navigation` |
 |component [name] | c | Add a component to your project   | `veams add component slider` |
+|custom [name] [folder]  | cu | Add a custom type to your project | `veams add custom myFolder` |
 |utility [name] | u | Add an utility to your project   | `veams add utility grid-col` |
 
 ### Command: install

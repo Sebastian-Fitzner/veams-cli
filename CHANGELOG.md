@@ -1,3 +1,7 @@
+### v1.2.22
+- added custom types for for `add` process
+- added new generator version
+
 ### v1.2.20
 - added automated veams-js installation routine to `veams new project`
 

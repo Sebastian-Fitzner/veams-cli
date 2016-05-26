@@ -21,12 +21,13 @@ project   | p     | Create a new project from scratch.
 
 
 Command: add
-===========================================================================
-Arguments        | Short | Description
------------------|-------|-------------------------------------------------
-block [name]     | b     | Add a block to your project
-component [name] | c     | Add a component to your project
-utility [name]   | u     | Add an utility to your project
+==============================================================================
+Arguments               | Short | Description
+------------------------|-------|---------------------------------------------
+block [name]            | b     | Add a block to your project
+custom [name] [folder]  | cu    | Add a custom type to your project
+component [name]        | c     | Add a component to your project
+utility [name]          | u     | Add an utility to your project
 
 
 Command: install
