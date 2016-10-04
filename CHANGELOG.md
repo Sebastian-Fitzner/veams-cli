@@ -1,3 +1,9 @@
+### v1.3.1
+- fix projectType reference error
+
+### v1.3.0
+- add new project type to config object
+
 ### v1.2.22
 - added custom types for for `add` process
 - added new generator version
@@ -12,7 +18,7 @@
 - clean-up release
 
 ### v1.2.14
-- added insert blueprint function to �veamsJS� installation
+- added insert blueprint function to `veamsJS` installation
 
 ### v1.2.13
 - added better utilitities support
