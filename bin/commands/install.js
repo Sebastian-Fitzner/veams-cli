@@ -158,7 +158,7 @@ module.exports = function (args) {
 				} else {
 					Helpers.message('gray', stdout);
 
-					Veams.npmInstall('respimage jquery exoskeleton underscore touchswipe handlebars', '--save', function (err, stdout, stderr) {
+					Veams.npmInstall('picturefill lazysizes veams-query exoskeleton handlebars', '--save', function (err, stdout, stderr) {
 						if (err) {
 							Helpers.message('red', Helpers.msg.error(err, stderr));
 						} else {

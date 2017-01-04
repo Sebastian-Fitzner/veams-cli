@@ -1,5 +1,8 @@
-### v1.3.1
-- fix projectType reference error
+### v1.5.0
+- Update veams-js installation
+
+### v1.4.0
+- Add self-contained config option
 
 ### v1.3.0
 - add new project type to config object
