@@ -2,13 +2,12 @@
 - Add new option to keep the initial folder structure by installation routine
 
 ### v1.4.0
-- Change project type to folderStructure
-
-### v1.3.1
-- fix projectType reference error
+- Add self-contained config option
 
 ### v1.3.0
 - add new project type to config object
+- fix projectType reference error
+- Update veams-js installation
 
 ### v1.2.22
 - added custom types for for `add` process
