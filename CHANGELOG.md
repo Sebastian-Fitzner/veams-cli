@@ -1,3 +1,9 @@
+### v1.5.0
+- Add new option to keep the initial folder structure by installation routine
+
+### v1.4.0
+- Change project type to folderStructure
+
 ### v1.3.1
 - fix projectType reference error
 
