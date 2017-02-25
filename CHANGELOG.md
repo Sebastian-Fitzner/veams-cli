@@ -1,4 +1,9 @@
 ### v1.5.0
+- Delete some generator options
+- Use latest yeoman-environment 
+- Use latest generator-veams version (8.0.0) with new yo version (1.8.5)
+
+### v1.5.0
 - Update veams-js installation
 
 ### v1.4.0

@@ -184,16 +184,6 @@ module.exports = function (args) {
 			});
 			break;
 
-		case Veams.DATA.aliases.exts.gm:
-			Helpers.message('cyan', 'Starting ' + Veams.generatorId.gruntId + ' installation ...');
-			Veams.runGenerator(Veams.generators.grunt, options, Veams.generatorId.gruntId);
-			break;
-
-		case Veams.DATA.aliases.exts.th:
-			Helpers.message('cyan', 'Starting ' + Veams.generatorId.templatingId + ' installation ...');
-			Veams.runGenerator(Veams.generators.templating, options, Veams.generatorId.templatingId);
-			break;
-
 		default:
 			console.log('Sorry, you do not have defined a valid installation argument.');
 	}

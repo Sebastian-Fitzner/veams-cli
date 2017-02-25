@@ -37,7 +37,6 @@ Arguments                    | Short | Description
 blueprint [path] [type]     | bp    | Install a blueprint based on Veams.
 bower-component [r] [n] [t] | bc    | Install a bower-component based on Veams.
 grunt-module                | gm    | Install a specific grunt module.
-template-helper             | th    | Install custom template helpers.
 veams-block [name]          | vb    | Install a specific veams-block.
 veams-component [name]      | vc    | Install a specific veams-component.
 veams-utility [name]        | vu    | Install a specific veams-utility.
