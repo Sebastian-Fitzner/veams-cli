@@ -149,41 +149,6 @@ module.exports = function (args) {
 
 			break;
 
-		case Veams.DATA.aliases.exts.vjs:
-			Helpers.message('cyan', 'Downloading ' + Veams.extensions.jsId + ' ...');
-			Veams.bowerInstall(Veams.extensions.jsId, options, function (error, stdout, stderr) {
-
-				if (error) {
-					Helpers.message('red', Helpers.msg.error(error, stderr));
-				} else {
-					Helpers.message('gray', stdout);
-
-					Veams.npmInstall('picturefill lazysizes veams-query exoskeleton handlebars', '--save', function (err, stdout, stderr) {
-						if (err) {
-							Helpers.message('red', Helpers.msg.error(err, stderr));
-						} else {
-							Helpers.message('gray', stdout);
-
-							Helpers.copyFile({
-								src: Veams.getBowerDir() + '/' + Veams.extensions.jsId + '/global-scss',
-								dest: Veams.DATA.projectConfig().paths.scss + '/global',
-								msg: true
-							});
-							Helpers.copyFile({
-								src: Veams.getBowerDir() + '/' + Veams.extensions.jsId + '/js',
-								dest: Veams.DATA.projectConfig().paths.js,
-								msg: true
-							});
-							
-							Veams.insertBlueprint(Veams.getBowerDir() + '/' + Veams.extensions.jsId + '/README.md');
-
-							Helpers.message('green', Helpers.msg.success(Veams.extensions.jsId));
-						}
-					});
-				}
-			});
-			break;
-
 		default:
 			console.log('Sorry, you do not have defined a valid installation argument.');
 	}

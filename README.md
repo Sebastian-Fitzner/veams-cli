@@ -67,4 +67,3 @@ Here you can find help instructions how you can use veams-cli:
 |veams-block [name] | vb | Install a specific veams-block. | `veams install veams-block overlay (--S)` |
 |veams-component [name] | vc | Install a specific veams-component. | `veams install veams-component slider (--S)` |
 |veams-utility [name] | vu | Install a specific veams-utility. | `veams install veams-utility grid (--S)` |
-|veams-js               | vjs | Install veams-js.                   | `veams install veams-js (--S)` |
