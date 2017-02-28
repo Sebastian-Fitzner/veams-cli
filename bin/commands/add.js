@@ -35,7 +35,7 @@ module.exports = function (args) {
 	if (type) {
 		Helpers.message('cyan', 'Starting to scaffold a new ' + type + '  ...', Veams.generator);
 
-		Veams.runGenerator(Veams.generators.blueprint, name + ' --' + type + ' --tmp', name, function () {
+		Veams.runGenerator(Veams.generators.blueprint, name + ' --' + type + ' --tmp --config', name, function () {
 			Veams.insertBlueprint('tmp/' + name);
 			Helpers.remove('tmp/' + name);
 		});
