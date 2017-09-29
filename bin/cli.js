@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/**
+ * ES Support
+ */
+require('babel-core/register');
 
 /**
  * Represents a file based cli.
@@ -10,8 +14,8 @@
 /* ==============================================
  * Requirements
  * ============================================== */
-var Helpers = require('../lib/utils/helpers');
-var Veams = require('../lib/veams');
+const Helpers = require('../lib/utils/helpers');
+const Veams = require('../lib/veams');
 
 /* ==============================================
  * Update Notifier
@@ -21,10 +25,10 @@ Veams.checkUpdateAvailability();
 /* ==============================================
  * Passed arguments
  * ============================================== */
-var args = process.argv;
-var cmd = args[2] || 'help';
-var options = args.slice(3);
-var alias = Veams.DATA.aliases.cmds;
+const args = process.argv;
+let cmd = args[2] || 'help';
+const options = args.slice(3);
+const alias = Veams.DATA.aliases.cmds;
 
 if (cmd.length === 2) {
 	cmd = alias[cmd.split('-')[1]] || cmd;
