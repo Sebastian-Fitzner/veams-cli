@@ -37,6 +37,6 @@ if (cmd.length === 2) {
 try {
 	require('./commands/' + cmd)(options);
 } catch (e) {
-	Helpers.message('red', 'ERROR: UNKNOWN_COMMAND\n' + e);
+	Helpers.message('red', `ERROR: UNKNOWN_COMMAND\n ${e}`);
 	require('./commands/help')();
 }

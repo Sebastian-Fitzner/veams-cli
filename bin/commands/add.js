@@ -1,8 +1,8 @@
 /* ==============================================
  * Requirements
  * ============================================== */
-var Helpers = require('../../lib/utils/helpers');
-var Veams = require('../../lib/veams');
+const helpers = require('../../lib/utils/helpers');
+const Veams = require('../../lib/veams');
 
 /* ==============================================
  * Export function
@@ -13,11 +13,11 @@ var Veams = require('../../lib/veams');
  *
  * @param {Array} args - Arguments in bash
  */
-module.exports = function (args) {
-	var type = args[0];
-	var alias = Veams.DATA.aliases.types;
-	var name;
-	var goodies;
+module.exports = async function add(args) {
+	const alias = Veams.DATA.aliases.types;
+	let type = args[0];
+	let name;
+	let goodies;
 
 
 	if (args.length > 1) {
@@ -25,21 +25,24 @@ module.exports = function (args) {
 		name = args.shift();
 		goodies = args.join(' ');
 	} else {
-		Helpers.message('yellow', Helpers.msg.warning('You have to provide a name for the blueprint!'));
-
+		helpers.message('gray', helpers.msg.help('You have to provide a name for the blueprint!'));
 		return;
 	}
 
 	type = alias[type] || type;
 
-	if (type) {
-		Helpers.message('cyan', 'Starting to scaffold a new ' + type + '  ...', Veams.generator);
+	if (!type) {
+		helpers.message('yellow', helpers.msg.warning('Sorry, you do not have defined a valid argument for adding a new blueprint.'));
+		return;
+	}
 
-		Veams.runGenerator(Veams.generators.blueprint, name + ' --' + type + ' --tmp --config', name, function () {
-			Veams.insertBlueprint('tmp/' + name);
-			Helpers.remove('tmp/' + name);
-		});
-	} else {
-		Helpers.message('yellow', Helpers.msg.warning('Sorry, you do not have defined a valid argument for adding a new blueprint.'));
+	helpers.message('cyan', 'Starting to scaffold a new ' + type + '  ...', Veams.generator);
+	let config = Veams.getBlueprintConfig({name, type});
+
+	try {
+		await Veams.runGenerator(Veams.generators.blueprint, `${config.name} ${config.path} --${config.type} --config`, 'name');
+		helpers.message('green', helpers.msg.success(`${config.name} was successfully created in ${config.path}/${config.name}`))
+	} catch (err) {
+		helpers.message('red', helpers.msg.error(err))
 	}
 };

@@ -1,40 +1,37 @@
 /* ==============================================
  * Requirements
  * ============================================== */
-var Veams = require('../../lib/veams');
-var Helpers = require('../../lib/utils/helpers');
+const Veams = require('../../lib/veams');
+const helpers = require('../../lib/utils/helpers');
 
 
 /* ==============================================
  * Helper functions
  * ============================================== */
 
-function installBowerComponent(obj) {
-	var registryName = obj.registryName;
-	var options = obj.options || '';
-	var name = obj.name;
-	var type = obj.type || 'component';
-
+async function installNpmComponent({registryName, options = '', name, type = 'component'}) {
 	if (!name) {
-		Helpers.message('yellow', Helpers.msg.warning('Please provide a name!'));
+		helpers.message('yellow', helpers.msg.warning('Please provide the name!'));
 		return;
 	}
 
-	Veams.bowerInstall(registryName, options, function (error, stdout, stderr) {
-		if (error) {
-			Helpers.message('red', Helpers.msg.error(error, stderr));
-		} else {
-			Helpers.message('gray', 'Veams-JS with all dependencies installed!');
+	try {
+		const config = Veams.getBlueprintConfig({name, type});
+		const src = `${process.cwd()}/node_modules/${registryName}`;
+		const dest = `${config.path}/${config.name}`;
 
-			Veams.addBlueprintFiles({
-				path: Veams.getBowerDir() + '/' + registryName,
-				name: name,
-				type: type
-			});
-			Veams.insertBlueprint(Veams.getBowerDir() + '/' + registryName);
-			Helpers.message('green', Helpers.msg.success(registryName));
-		}
-	});
+		await Veams.npmInstall(registryName, options);
+		await helpers.copy({
+			src,
+			dest
+		});
+
+		Veams.insertBlueprint(dest);
+
+		helpers.message('green', helpers.msg.success(registryName));
+	} catch (err) {
+		helpers.message('red', helpers.msg.error(err));
+	}
 }
 
 /* ==============================================
@@ -65,7 +62,7 @@ module.exports = function (args) {
 
 	switch (argument) {
 		case Veams.extensions.componentsId:
-			Helpers.message('cyan', 'Downloading all ' + Veams.extensions.componentsId + ' ...');
+			helpers.message('cyan', 'Downloading all ' + Veams.extensions.componentsId + ' ...');
 			Veams.bowerInstall(Veams.extensions.componentsId, options);
 			break;
 
@@ -74,7 +71,7 @@ module.exports = function (args) {
 			registryName = Veams.extensions.componentId + '-' + component;
 			options = args.join(' ');
 
-			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
+			helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
 			installBowerComponent({
 				registryName: registryName,
@@ -90,7 +87,7 @@ module.exports = function (args) {
 			registryName = Veams.extensions.utilityId + '-' + vuName;
 			options = args.join(' ');
 
-			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
+			helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
 			installBowerComponent({
 				registryName: registryName,
@@ -101,29 +98,13 @@ module.exports = function (args) {
 
 			break;
 
-		case Veams.DATA.aliases.exts.vb:
-			var vbName = args.shift();
-			registryName = Veams.extensions.blockId + '-' + vbName;
-			options = args.join(' ');
-
-			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
-
-			installBowerComponent({
-				registryName: registryName,
-				options: options,
-				name: vbName,
-				type: 'block'
-			});
-
-			break;
-
 		case Veams.DATA.aliases.exts.bc:
 			registryName = args.shift();
 			options = args.join(' ');
 			var bcName = args[0];
 			var type = args[1] || '';
 
-			Helpers.message('cyan', 'Downloading ' + registryName + ' ...');
+			helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
 			installBowerComponent({
 				registryName: registryName,
@@ -136,9 +117,9 @@ module.exports = function (args) {
 		case Veams.DATA.aliases.types.bp:
 			var bpPath = args.shift();
 			var bpType = args[0] || 'component';
-			var bpName = Helpers.getLastFolder(bpPath);
+			var bpName = helpers.getLastFolder(bpPath);
 
-			Helpers.message('cyan', 'Starting to install a local blueprint  ...');
+			helpers.message('cyan', 'Starting to install a local blueprint  ...');
 
 			Veams.addBlueprintFiles({
 				path: bpPath,
@@ -149,7 +130,7 @@ module.exports = function (args) {
 
 			break;
 
-		default:
+			defaulconst
 			console.log('Sorry, you do not have defined a valid installation argument.');
 	}
 };

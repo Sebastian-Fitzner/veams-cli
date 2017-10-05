@@ -1,9 +1,9 @@
 /* ==============================================
  * Requirements
  * ============================================== */
-var Helpers = require('../../lib/utils/helpers');
-var Veams = require('../../lib/veams');
-var fsx = require('fs-extra');
+const fsx = require('fs-extra');
+const helpers = require('../../lib/utils/helpers');
+const Veams = require('../../lib/veams');
 
 /* ==============================================
  * Export function
@@ -14,10 +14,10 @@ var fsx = require('fs-extra');
  *
  * @param {Array} args - Arguments in console
  */
-module.exports = function (args) {
-	var type = args[0];
-	var options;
-	var alias = Veams.DATA.aliases.types;
+module.exports = async function (args) {
+	const alias = Veams.DATA.aliases.types;
+	let type = args[0];
+	let options;
 
 	if (args.length > 1) {
 		type = args.shift();
@@ -28,20 +28,26 @@ module.exports = function (args) {
 
 	switch (type) {
 		case Veams.DATA.aliases.types.p:
-			Veams.runGenerator(Veams.generators.standard, options, 'Project', function () {});
+			Veams.runGenerator(Veams.generators.standard, options, 'Project', function () {
+			});
 			break;
 
 		case Veams.DATA.aliases.types.bp:
 			if (!options) {
-				return Helpers.message('yellow', Veams.msg.warning('You have to provide a name for your blueprint!'));
+				return helpers.message('yellow', helpers.msg.warning('You have to provide a name for your blueprint!'));
 			}
 
-			Helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
+			try {
+				helpers.message('cyan', 'Starting to scaffold a new blueprint  ...');
+				await Veams.runGenerator(Veams.generators.blueprint, `${options} --config`, 'Blueprint');
+				helpers.message('green', helpers.msg.success(`Blueprint`));
+			} catch (err) {
+				helpers.message('red', helpers.msg.error(err));
+			}
 
-			Veams.runGenerator(Veams.generators.blueprint, options, 'Blueprint');
 			break;
 
 		default:
-			Helpers.message('yellow', Helpers.msg.warning('Sorry, you do not have defined a valid argument for a new scaffold.'));
+			helpers.message('yellow', helpers.msg.warning('Sorry, you do not have defined a valid argument for a new scaffold.'));
 	}
 };

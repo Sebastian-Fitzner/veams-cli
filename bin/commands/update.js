@@ -1,8 +1,8 @@
 /* ==============================================
  * Requirements
  * ============================================== */
-var Veams = require('../../lib/veams');
-var Helpers = require('../../lib/utils/helpers');
+const Veams = require('../../lib/veams');
+const helpers = require('../../lib/utils/helpers');
 
 /* ==============================================
  * Export
@@ -11,7 +11,14 @@ var Helpers = require('../../lib/utils/helpers');
 /**
  * Update function of extensions.
  */
-module.exports = function () {
-	Helpers.message('cyan', 'Updating Veams ...');
-	Veams.npmInstall('veams-cli -g');
+module.exports = async function update() {
+	helpers.message('cyan', 'Updating Veams ...');
+
+	try {
+		await Veams.npmInstall('veams-cli -g');
+		helpers.message('green', helpers.msg.success('Veams'));
+
+	} catch (err) {
+		helpers.message('red', helpers.msg.error(err));
+	}
 };
