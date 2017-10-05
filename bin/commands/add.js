@@ -17,13 +17,11 @@ module.exports = async function add(args) {
 	const alias = Veams.DATA.aliases.types;
 	let type = args[0];
 	let name;
-	let goodies;
 
 
 	if (args.length > 1) {
 		type = args.shift();
 		name = args.shift();
-		goodies = args.join(' ');
 	} else {
 		helpers.message('gray', helpers.msg.help('You have to provide a name for the blueprint!'));
 		return;
