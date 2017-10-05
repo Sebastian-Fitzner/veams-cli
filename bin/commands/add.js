@@ -41,6 +41,8 @@ module.exports = async function add(args) {
 
 	try {
 		await Veams.runGenerator(Veams.generators.blueprint, `${config.name} ${config.path} --${config.type} --config`, 'name');
+		Veams.insertBlueprint(`${config.path}/${config.name}`);
+
 		helpers.message('green', helpers.msg.success(`${config.name} was successfully created in ${config.path}/${config.name}`))
 	} catch (err) {
 		helpers.message('red', helpers.msg.error(err))

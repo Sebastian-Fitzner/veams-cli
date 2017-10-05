@@ -20,15 +20,19 @@ async function installNpmComponent({registryName, options = '', name, type = 'co
 		const src = `${process.cwd()}/node_modules/${registryName}`;
 		const dest = `${config.path}/${config.name}`;
 
-		await Veams.npmInstall(registryName, options);
-		await helpers.copy({
-			src,
-			dest
-		});
+		Veams
+			.npmInstall(registryName, options)
+			.then(() => {
+				return helpers.copy({
+					src,
+					dest
+				});
+			})
+			.then(() => {
+				Veams.insertBlueprint(dest);
+				helpers.message('green', helpers.msg.success(registryName));
+			});
 
-		Veams.insertBlueprint(dest);
-
-		helpers.message('green', helpers.msg.success(registryName));
 	} catch (err) {
 		helpers.message('red', helpers.msg.error(err));
 	}
@@ -43,14 +47,13 @@ async function installNpmComponent({registryName, options = '', name, type = 'co
  *
  * @param {Array} args - Arguments in console
  */
-module.exports = function (args) {
-	var argument = args[0];
-	var options = '';
-	var registryName = '';
-	var extArgument = Veams.DATA.aliases.exts;
-	var typeArgument = Veams.DATA.aliases.types;
+module.exports = async function (args) {
+	const extArgument = Veams.DATA.aliases.exts;
+	const typeArgument = Veams.DATA.aliases.types;
+	let argument = args[0];
+	let options = '';
+	let registryName = '';
 
-	Veams.DATA.bowerDir();
 	Veams.DATA.projectConfig();
 
 	if (args.length > 1) {
@@ -67,15 +70,15 @@ module.exports = function (args) {
 			break;
 
 		case Veams.DATA.aliases.exts.vc:
-			var component = args.shift();
+			const component = args.shift();
 			registryName = Veams.extensions.componentId + '-' + component;
 			options = args.join(' ');
 
 			helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
-			installBowerComponent({
-				registryName: registryName,
-				options: options,
+			await installNpmComponent({
+				registryName,
+				options,
 				name: component,
 				type: 'component'
 			});
