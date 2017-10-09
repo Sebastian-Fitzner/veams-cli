@@ -18,7 +18,6 @@ module.exports = async function add(args) {
 	let type = args[0];
 	let name;
 
-
 	if (args.length > 1) {
 		type = args.shift();
 		name = args.shift();
@@ -38,6 +37,8 @@ module.exports = async function add(args) {
 	let config = Veams.getBlueprintConfig({name, type});
 
 	try {
+		const styleFile = await Veams.getImportFile('style');
+
 		await Veams.runGenerator(Veams.generators.blueprint, `${config.name} ${config.path} --${config.type} --config`, 'name');
 		Veams.insertBlueprint(`${config.path}/${config.name}`);
 

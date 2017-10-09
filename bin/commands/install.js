@@ -64,11 +64,6 @@ module.exports = async function (args) {
 	argument = extArgument[argument] || typeArgument[argument] || argument;
 
 	switch (argument) {
-		case Veams.extensions.componentsId:
-			helpers.message('cyan', 'Downloading all ' + Veams.extensions.componentsId + ' ...');
-			Veams.bowerInstall(Veams.extensions.componentsId, options);
-			break;
-
 		case Veams.DATA.aliases.exts.vc:
 			const component = args.shift();
 			registryName = Veams.extensions.componentId + '-' + component;
@@ -86,54 +81,40 @@ module.exports = async function (args) {
 			break;
 
 		case Veams.DATA.aliases.exts.vu:
-			var vuName = args.shift();
+			const vuName = args.shift();
 			registryName = Veams.extensions.utilityId + '-' + vuName;
 			options = args.join(' ');
 
 			helpers.message('cyan', 'Downloading ' + registryName + ' ...');
 
-			installBowerComponent({
-				registryName: registryName,
-				options: options,
-				name: vuName,
+			await installNpmComponent({
+				registryName,
+				options,
+				name: component,
 				type: 'utility'
 			});
 
 			break;
 
-		case Veams.DATA.aliases.exts.bc:
-			registryName = args.shift();
-			options = args.join(' ');
-			var bcName = args[0];
-			var type = args[1] || '';
-
-			helpers.message('cyan', 'Downloading ' + registryName + ' ...');
-
-			installBowerComponent({
-				registryName: registryName,
-				name: bcName,
-				type: type
-			});
-
-			break;
-
 		case Veams.DATA.aliases.types.bp:
-			var bpPath = args.shift();
-			var bpType = args[0] || 'component';
-			var bpName = helpers.getLastFolder(bpPath);
+			const src = args.shift();
+			const type = args[0] || 'component';
+			const name = helpers.getLastFolder(bpPath);
+			const config = Veams.getBlueprintConfig({name, type});
+			const dest = `${config.path}/${config.name}`;
 
 			helpers.message('cyan', 'Starting to install a local blueprint  ...');
 
-			Veams.addBlueprintFiles({
-				path: bpPath,
-				name: bpName,
-				type: bpType
+			await helpers.copy({
+				src,
+				dest
 			});
-			Veams.insertBlueprint(bpPath);
+
+			Veams.insertBlueprint(dest);
 
 			break;
 
-			defaulconst
+		default:
 			console.log('Sorry, you do not have defined a valid installation argument.');
 	}
 };
