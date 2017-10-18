@@ -34,13 +34,14 @@ module.exports = async function add(args) {
 	}
 
 	helpers.message('cyan', 'Starting to scaffold a new ' + type + '  ...', Veams.generator);
-	let config = Veams.getBlueprintConfig({name, type});
+
+	const config = Veams.getBlueprintConfig({name, type});
+	const fullPath = `${config.path}/${config.name}`;
 
 	try {
-		const styleFile = await Veams.getImportFile('style');
-
-		await Veams.runGenerator(Veams.generators.blueprint, `${config.name} ${config.path} --${config.type} --config`, 'name');
-		Veams.insertBlueprint(`${config.path}/${config.name}`);
+		const item = await Veams.runGenerator(Veams.generators.blueprint, `${config.name} ${config.path} --${config.type} --config`, 'name');
+		await Veams.updateImportFiles(config.path, config.name);
+		Veams.insertBlueprint(fullPath);
 
 		helpers.message('green', helpers.msg.success(`${config.name} was successfully created in ${config.path}/${config.name}`))
 	} catch (err) {
