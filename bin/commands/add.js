@@ -1,8 +1,8 @@
 /* ==============================================
  * Requirements
  * ============================================== */
-const helpers = require('../../lib/utils/helpers');
 const Veams = require('../../lib/veams');
+const helpers = require('../../lib/utils/helpers');
 
 /* ==============================================
  * Export function
@@ -15,14 +15,21 @@ const Veams = require('../../lib/veams');
  */
 module.exports = async function add(args) {
 	const alias = Veams.DATA.aliases.types;
+	const projectConfig = Veams.DATA.projectConfig();
+	const projectType = projectConfig.projectType;
+	let skip = args.indexOf('--skip-imports') !== -1 || args.indexOf('--si') !== -1;
 	let type = args[0];
 	let name;
+
+	if (projectConfig.blueprints && projectConfig.blueprints[type]) {
+		skip = projectConfig.blueprints[type] || skip;
+	}
 
 	if (args.length > 1) {
 		type = args.shift();
 		name = args.shift();
 	} else {
-		helpers.message('gray', helpers.msg.help('You have to provide a name for the blueprint!'));
+		helpers.message('gray', helpers.msg.help('You have to provide the type and name for the blueprint!'));
 		return;
 	}
 
@@ -33,15 +40,23 @@ module.exports = async function add(args) {
 		return;
 	}
 
-	helpers.message('cyan', 'Starting to scaffold a new ' + type + '  ...', Veams.generator);
+	helpers.message('cyan', 'Starting to scaffold a new ' + type + '  ...');
 
 	const config = Veams.getBlueprintConfig({name, type});
 	const fullPath = `${config.path}/${config.name}`;
 
 	try {
-		const item = await Veams.runGenerator(Veams.generators.blueprint, `${config.name} ${config.path} --${config.type} --config`, 'name');
-		await Veams.updateImportFiles(config.path, config.name);
-		Veams.insertBlueprint(fullPath);
+		let skipFilesOption = skip ? '--skipDefaults' : '';
+		await Veams.runGenerator(Veams.generators.blueprint, `${config.type} ${config.name} ${config.path} --config ${skipFilesOption}`, `${config.name}`);
+
+		if (!skip) {
+			await Veams.updateImportFiles(config.path, config.name);
+			Veams.insertBlueprint(fullPath);
+
+			if (projectType === 'single-page-app') {
+				await Veams.deleteDefaultFiles(config.path);
+			}
+		}
 
 		helpers.message('green', helpers.msg.success(`${config.name} was successfully created in ${config.path}/${config.name}`))
 	} catch (err) {
