@@ -90,7 +90,7 @@ module.exports = async function (args) {
 			await installNpmComponent({
 				registryName,
 				options,
-				name: component,
+				name: vuName,
 				type: 'utility'
 			});
 
