@@ -1,6 +1,4 @@
-# DEPRECATED :: Use `@veams/cli`
-
-https://github.com/Veams/cli
+# DEPRECATED :: Use [`@veams/cli`](https://github.com/Veams/cli)
 
 <br>
 <br>
