@@ -1,4 +1,7 @@
-<p align="center"><img src="http://www.veams.org/img/svg/icons/veams-std.svg">
+# DEPRECATED :: Use `@veams/cli`
+
+https://github.com/Veams/cli
+
 <br>
 <br>
 <a href="http://badge.fury.io/js/veams-cli"><img src="https://badge.fury.io/js/veams-cli.svg" alt="NPM version" /></a>
